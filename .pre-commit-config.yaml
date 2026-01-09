@@ -1,0 +1,35 @@
+repos:
+  # Universal hygiene checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: end-of-file-fixer
+        name: Fix ends of files
+        exclude: (^|/)(bin|obj|wwwroot)(/|$)|.*Generated.*
+
+      - id: trailing-whitespace
+        name: Remove trailing whitespace
+        exclude: (^|/)(bin|obj|wwwroot)(/|$)|.*Generated.*
+
+      - id: mixed-line-ending
+        name: Normalize line endings to LF
+        args: ["--fix=lf"]
+        exclude: (^|/)(bin|obj|wwwroot)(/|$)|.*Generated.*
+
+      - id: check-yaml
+        name: Run GitHub YAML linter
+        exclude: (^|/)(bin|obj|wwwroot)(/|$)|.*Generated.*
+
+      - id: check-json
+        name: Run GitHub JSON linter on files except tsconfig.json
+        # Exlude tsconfig*.json as it usually contains comments
+        exclude: tsconfig.json$
+
+  # Web and config formats
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        name: Run Prettier linter on documentation, web and config files
+        files: .(js|mjs|ts|tsx|css|scss|html|md|yml|yaml|json)$
+        exclude: (^|/)(bin|obj|wwwroot)(/|$)|.*Generated.*

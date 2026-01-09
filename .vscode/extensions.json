@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "pkief.material-icon-theme",
+    "usernamehw.errorlens",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "hashicorp.terraform",
+    "redhat.vscode-yaml",
+    "redhat.vscode-xml",
+    "seyyedkhandon.firacode"
+  ]
+}

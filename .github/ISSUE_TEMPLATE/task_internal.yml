@@ -1,0 +1,112 @@
+name: Task (internal)
+description: A small, scoped task suitable for AI-assisted implementation
+title: "task: "
+labels:
+  - task
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for small, well-scoped work items (good for AI agents).
+
+        Prefer a single vertical slice (or a small coherent stage) over broad refactors.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What outcome should exist when this task is done?
+      placeholder: "Example: Add Issue Forms templates under .github/ISSUE_TEMPLATE and ensure GitHub uses them."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Links and background the implementer needs.
+      placeholder: |
+        - Relevant docs: docs/planning/*
+        - Related decisions: implementation/ai/decisions.md
+        - Related issues/PRs:
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints / invariants
+      description: What must not change?
+      placeholder: |
+        - Do not change public APIs
+        - Do not add new dependencies
+        - Keep changes minimal and focused
+    validations:
+      required: false
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      value: |
+        - In scope:
+        - Out of scope:
+    validations:
+      required: true
+
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of done
+      description: Clear, verifiable exit criteria.
+      placeholder: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Estimated size
+      options:
+        - Small (≤1 hour)
+        - Medium (1–4 hours)
+        - Large (4+ hours)
+    validations:
+      required: false
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing / validation
+      description: How should we know it works?
+      placeholder: |
+        - Commands to run:
+        - Manual checks:
+        - Expected outputs:
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Guards
+      options:
+        - label: I confirm this is scoped to a small, coherent change.
+          required: true
+        - label: I confirm constraints/invariants are stated (or not applicable).
+          required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes for AI-assisted implementation (optional)
+      description: Anything that helps an agent proceed safely.
+      placeholder: |
+        - Preferred approach:
+        - Files to touch:
+        - Files to avoid:
+    validations:
+      required: false

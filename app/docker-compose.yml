@@ -1,0 +1,7 @@
+# Optional: local development via Docker Compose.
+#
+# This file is intentionally minimal so the template doesn’t force a stack.
+# Add services as your project becomes concrete, or delete this file if you
+# don't use Docker Compose.
+
+services: {}

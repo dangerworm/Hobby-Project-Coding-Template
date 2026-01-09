@@ -1,0 +1,123 @@
+{
+  // ---------------------------
+  // Editor basics
+  // ---------------------------
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+
+  "files.autoSaveDelay": 0,
+  "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+
+  // Keep VS Code from surprising you with huge-format changes unless repos opt in.
+  // If you find this annoying, set to false.
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": true,
+
+  "workbench.iconTheme": "material-icon-theme",
+
+  // ---------------------------
+  // Copilot
+  // ---------------------------
+  "github.copilot.nextEditSuggestions.enabled": true,
+
+  // ---------------------------
+  // C#
+  // ---------------------------
+  "[csharp]": { "editor.defaultFormatter": "ms-dotnettools.csharp" },
+
+  // ---------------------------
+  // Git
+  // ---------------------------
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  // ---------------------------
+  // JS/TS: ESLint + Prettier (one linter, one formatter)
+  // ---------------------------
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // ESLint runs as the linter; avoid letting it "be the formatter"
+  "eslint.format.enable": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Fixers on save: leave as "explicit" to avoid surprise mass-changes.
+  // If you want auto-fix on save everywhere, change these to true.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+
+  // Ensure the common web filetypes use Prettier
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[scss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // ---------------------------
+  // Markdown
+  // ---------------------------
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // ---------------------------
+  // SQL
+  // ---------------------------
+  "[sql]": { "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode" },
+
+  // ---------------------------
+  // Terraform: format on save via HashiCorp extension
+  // ---------------------------
+  "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
+  "[terraform-vars]": { "editor.defaultFormatter": "hashicorp.terraform" },
+
+  // Update TS imports on move
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // ---------------------------
+  // YAML / XML / GitHub Actions / Docker Compose
+  // ---------------------------
+  "[yaml]": { "editor.defaultFormatter": "redhat.vscode-yaml" },
+  "[xml]": { "editor.defaultFormatter": "redhat.vscode-xml" },
+
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+
+  // ---------------------------
+  // Terminal
+  // ---------------------------
+  "terminal.integrated.defaultProfile.windows": "Git Bash"
+}

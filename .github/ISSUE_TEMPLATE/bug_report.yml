@@ -1,0 +1,93 @@
+name: Bug report
+description: Report something that is broken or incorrect
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug.
+
+        If this is a security issue, please do not open a public issue.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What’s broken? One sentence.
+      placeholder: "Example: The app crashes when saving a new user."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happens instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal set of steps.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Anything relevant about the environment.
+      value: |
+        - OS:
+        - Repo/branch/commit:
+        - Tooling (optional):
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs / screenshots / stack traces / relevant paths.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Impact / severity
+      options:
+        - Low (minor annoyance)
+        - Medium (workaround exists)
+        - High (blocks core workflow)
+        - Critical (data loss/security/reliability)
+    validations:
+      required: false
+
+  - type: textarea
+    id: ai_notes
+    attributes:
+      label: Notes for AI-assisted fixes (optional)
+      description: Constraints, suggested approach, and links to planning docs/decisions.
+      placeholder: |
+        - Constraints (what must not change):
+        - Suggested approach:
+        - Links to docs/planning/* or implementation/ai/decisions.md:
+    validations:
+      required: false

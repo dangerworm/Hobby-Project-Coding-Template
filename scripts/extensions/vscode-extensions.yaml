@@ -1,0 +1,98 @@
+# VS Code Extensions Configuration
+# This file defines the allowlist of VS Code extensions organized by category
+
+groups:
+  - name: "AI assistance"
+    extensions:
+      - github.copilot
+      - github.copilot-chat
+      - openai.chatgpt
+
+  - name: "API / Data / DB"
+    extensions:
+      - humao.rest-client
+      - mechatroner.rainbow-csv
+      - grapecity.gc-excelviewer
+      - ms-vscode.hexeditor
+      - ms-ossdata.vscode-pgsql
+      - inferrinizzard.prettier-sql-vscode
+      - jakeboone02.cypher-query-language
+
+  - name: "BDD / Testing"
+    extensions:
+      - alexkrechik.cucumberautocomplete
+
+  - name: "Containers / Remote dev"
+    extensions:
+      - ms-azuretools.vscode-containers
+      - ms-vscode-remote.remote-containers
+      - ms-vscode-remote.remote-wsl
+      - ms-vscode-remote.remote-ssh
+      - ms-vscode-remote.remote-ssh-edit
+      - ms-vscode-remote.vscode-remote-extensionpack
+      - ms-vscode.remote-explorer
+      - ms-vscode.remote-server
+
+  - name: "Core / UX"
+    extensions:
+      - medo64.render-crlf
+      - pkief.material-icon-theme
+      - usernamehw.errorlens
+
+  - name: "Fonts"
+    extensions:
+      - seyyedkhandon.firacode
+
+  - name: "Git / Collaboration"
+    extensions:
+      - eamodio.gitlens
+      - donjayamanne.githistory
+      - mhutchie.git-graph
+      - ms-vsliveshare.vsliveshare
+      - github.vscode-pull-request-github
+      - github.vscode-github-actions
+      - team-sapling.sapling
+
+  - name: "GraphQL"
+    extensions:
+      - graphql.vscode-graphql
+      - graphql.vscode-graphql-syntax
+      - graphql.vscode-graphql-execution
+
+  - name: "IaC / Config"
+    extensions:
+      - hashicorp.terraform
+      - redhat.vscode-yaml
+      - redhat.vscode-xml
+
+  - name: "JS / TS / Web"
+    extensions:
+      - dbaeumer.vscode-eslint
+      - esbenp.prettier-vscode
+      - formulahendry.auto-rename-tag
+      - christian-kohler.path-intellisense
+      - christian-kohler.npm-intellisense
+      - jasonnutter.search-node-modules
+
+  - name: ".NET / C#"
+    extensions:
+      - ms-dotnettools.csdevkit
+      - ms-dotnettools.csharp
+      - ms-dotnettools.vscode-dotnet-runtime
+
+  - name: "Ops / Shell"
+    extensions:
+      - ms-vscode.powershell
+
+  - name: "Python / Jupyter"
+    extensions:
+      - ms-python.python
+      - ms-python.vscode-pylance
+      - ms-python.debugpy
+      - ms-python.vscode-python-envs
+      - ms-toolsai.jupyter
+      - ms-toolsai.jupyter-keymap
+      - ms-toolsai.jupyter-renderers
+      - ms-toolsai.vscode-jupyter-cell-tags
+      - ms-toolsai.vscode-jupyter-slideshow
+      - charliermarsh.ruff

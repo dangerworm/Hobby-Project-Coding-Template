@@ -1,0 +1,44 @@
+# VS Code Extensions Configuration - Additional Extensions
+# This file defines additional VS Code extensions organized by category
+
+groups:
+  - name: "API / Data / DB"
+    extensions:
+      - adpyke.vscode-sql-formatter
+      - zxh404.vscode-proto3
+
+  - name: "Containers / Remote dev"
+    extensions:
+      - ms-azuretools.vscode-docker
+
+  - name: "Git / Collaboration"
+    extensions:
+      - atlassian.atlascode
+
+  - name: "GraphQL"
+    extensions:
+      - mquandalle.graphql
+
+  - name: "Markdown"
+    extensions:
+      - davidanson.vscode-markdownlint
+      - yzhang.markdown-all-in-one
+
+  - name: "JS / TS / Web"
+    extensions:
+      - eg2.vscode-npm-script
+      - xabikos.javascriptsnippets
+      - xabikos.reactsnippets
+      - jawandarajbir.react-vscode-extension-pack
+      - michelemelluso.code-beautifier
+      - msjsdiag.vscode-react-native
+      - robinbentley.sass-indented
+
+  - name: ".NET / C#"
+    extensions:
+      - ms-dotnettools.vscodeintellicode-csharp
+
+  - name: "Processing / PDE"
+    extensions:
+      - millenniumambiguity.processing-formatter
+      - tobiah.language-pde

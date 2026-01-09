@@ -1,0 +1,58 @@
+name: Question / decision
+description: Ask a targeted question or request a decision that unblocks work
+title: "question: "
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when a specific decision or answer is needed to move forward.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question / decision needed
+      description: What do you need answered/decided?
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this is needed
+      description: What does it unblock? What happens if we don’t decide?
+    validations:
+      required: true
+
+  - type: textarea
+    id: options
+    attributes:
+      label: Options
+      description: List the realistic options with pros/cons.
+      placeholder: |
+        - Option A
+          - Pros:
+          - Cons:
+
+        - Option B
+          - Pros:
+          - Cons:
+    validations:
+      required: false
+
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation (optional)
+      description: If you have a preference, say why.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        If you’re using the AI collaboration workflow, record the decision in:
+        - implementation/ai/decisions.md
+
+        …and update any relevant planning docs in docs/planning/.

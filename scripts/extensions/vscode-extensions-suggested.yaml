@@ -1,0 +1,45 @@
+# VS Code Extensions Configuration - Additional Extensions
+# This file defines additional VS Code extensions organized by category
+
+# Please add a new extensions to the appropriate category group or create a new group if needed.
+
+groups:
+  - name: "AI assistance"
+    extensions:
+
+  - name: "API / Data / DB"
+    extensions:
+
+  - name: "BDD / Testing"
+    extensions:
+
+  - name: "Containers / Remote dev"
+    extensions:
+
+  - name: "Core / UX"
+    extensions:
+
+  - name: "Fonts"
+    extensions:
+      - seyyedkhandon.firacode
+
+  - name: "Git / Collaboration"
+    extensions:
+
+  - name: "GraphQL"
+    extensions:
+
+  - name: "IaC / Config"
+    extensions:
+
+  - name: "JS / TS / Web"
+    extensions:
+
+  - name: ".NET / C#"
+    extensions:
+
+  - name: "Processing / PDE"
+    extensions:
+
+  - name: "Python / Jupyter"
+    extensions:

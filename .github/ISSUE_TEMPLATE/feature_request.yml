@@ -1,0 +1,88 @@
+name: Feature request
+description: Propose a new user-visible feature or capability
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for user-visible features.
+        Keep scope small and prefer shippable vertical slices.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What do you want to add/change?
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem does this solve, and for whom?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed solution
+      description: Describe the simplest approach that would solve the problem.
+    validations:
+      required: false
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      value: |
+        - In scope:
+        - Out of scope:
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: 3–8 bullet points that define “done”.
+      placeholder: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      placeholder: |
+        - Alternative 1:
+        - Alternative 2:
+    validations:
+      required: false
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks / unknowns
+      placeholder: |
+        - Security/privacy:
+        - Data migrations:
+        - Performance:
+    validations:
+      required: false
+
+  - type: textarea
+    id: ai_notes
+    attributes:
+      label: Notes for AI-assisted implementation (optional)
+      description: Suggested slices and which planning docs to update.
+      placeholder: |
+        - Suggested vertical slices (DB/API/UI/tests/docs):
+        - Relevant planning docs to update (docs/planning/*):
+    validations:
+      required: false
