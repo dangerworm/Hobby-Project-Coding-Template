@@ -4,8 +4,8 @@ Record stack choices and versions here. This prevents dependency drift.
 
 ## Languages
 
-- Backend:
-- Frontend:
+- Backend/API:
+- Frontend/Client:
 - Infrastructure:
 
 ## Frameworks and libraries
@@ -25,6 +25,7 @@ Record stack choices and versions here. This prevents dependency drift.
 
 - Package managers:
 - Formatting/linting:
+- Migrations (Flyway, etc.):
 - Testing:
 
 ## Hosting / platform

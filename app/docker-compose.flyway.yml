@@ -1,0 +1,15 @@
+# Optional Flyway runner via Docker Compose.
+#
+# This is intentionally separate from docker-compose.yml so the template's
+# default compose file can stay stack-agnostic.
+
+services:
+  flyway:
+    image: flyway/flyway:10
+    volumes:
+      - ./flyway/sql:/flyway/sql:ro
+    env_file:
+      - ./flyway/.env
+    # Example:
+    #   docker compose -f docker-compose.flyway.yml run --rm flyway info
+    #   docker compose -f docker-compose.flyway.yml run --rm flyway migrate

@@ -3,8 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-BACKEND_DIR="$SCRIPT_DIR/backend"
-FRONTEND_DIR="$SCRIPT_DIR/frontend"
+API_DIR="$SCRIPT_DIR/api"
+CLIENT_DIR="$SCRIPT_DIR/client"
 
 DOTNET_TFM="net9.0"
 
@@ -135,29 +135,29 @@ main() {
   printf -- "- .NET base: %s\n" "$dotnet_base"
   printf -- "- Vite name: %s\n\n" "$vite_name"
 
-  if ! confirm "Proceed and scaffold into app/backend and app/frontend?"; then
+  if ! confirm "Proceed and scaffold into app/api and app/client?"; then
     printf "Aborted.\n"
     exit 0
   fi
 
-  mkdir -p "$BACKEND_DIR"
-  if ! dir_is_effectively_empty "$BACKEND_DIR"; then
-    fail "Backend directory is not empty: $BACKEND_DIR (refusing to overwrite)."
+  mkdir -p "$API_DIR"
+  if ! dir_is_effectively_empty "$API_DIR"; then
+    fail "API directory is not empty: $API_DIR (refusing to overwrite)."
   fi
 
-  if [[ -e "$BACKEND_DIR/${dotnet_base}.sln" ]]; then
-    fail "Backend solution already exists: $BACKEND_DIR/${dotnet_base}.sln"
+  if [[ -e "$API_DIR/${dotnet_base}.sln" ]]; then
+    fail "API solution already exists: $API_DIR/${dotnet_base}.sln"
   fi
 
-  if [[ -e "$FRONTEND_DIR" ]]; then
-    if ! dir_is_effectively_empty "$FRONTEND_DIR"; then
-      fail "Frontend directory is not empty: $FRONTEND_DIR (refusing to overwrite)."
+  if [[ -e "$CLIENT_DIR" ]]; then
+    if ! dir_is_effectively_empty "$CLIENT_DIR"; then
+      fail "Client directory is not empty: $CLIENT_DIR (refusing to overwrite)."
     fi
   fi
 
-  printf "\n==> Scaffolding backend (.NET)\n"
+  printf "\n==> Scaffolding api (.NET)\n"
   (
-    cd "$BACKEND_DIR"
+    cd "$API_DIR"
     dotnet new sln -n "$dotnet_base"
     mkdir -p src
     cd src
@@ -179,7 +179,7 @@ main() {
   )
 
   # Stabilize ports so Vite proxy doesn't need guesswork.
-  local launch_settings="$BACKEND_DIR/src/${dotnet_base}.Web/Properties/launchSettings.json"
+  local launch_settings="$API_DIR/src/${dotnet_base}.Web/Properties/launchSettings.json"
   if [[ -f "$launch_settings" ]]; then
     cat >"$launch_settings" <<'JSON'
 {
@@ -211,7 +211,7 @@ JSON
   fi
 
   # Provide a stable API prefix (/api) and a simple health endpoint.
-  local program_cs="$BACKEND_DIR/src/${dotnet_base}.Web/Program.cs"
+  local program_cs="$API_DIR/src/${dotnet_base}.Web/Program.cs"
   if [[ -f "$program_cs" ]]; then
     cat >"$program_cs" <<'CS'
 var builder = WebApplication.CreateBuilder(args);
@@ -237,32 +237,32 @@ app.Run();
 CS
   fi
 
-  printf "\n==> Scaffolding frontend (Vite React/TS)\n"
+  printf "\n==> Scaffolding client (Vite React/TS)\n"
   local moved_env_example=""
-  if [[ -f "$FRONTEND_DIR/.env.example" ]]; then
-    moved_env_example="$SCRIPT_DIR/.env.example.frontend.bak"
-    mv "$FRONTEND_DIR/.env.example" "$moved_env_example"
+  if [[ -f "$CLIENT_DIR/.env.example" ]]; then
+    moved_env_example="$SCRIPT_DIR/.env.example.client.bak"
+    mv "$CLIENT_DIR/.env.example" "$moved_env_example"
   fi
 
-	# If the frontend directory exists (even empty), remove it so create-vite can create it.
-	if [[ -d "$FRONTEND_DIR" ]]; then
-		rmdir "$FRONTEND_DIR" 2>/dev/null || true
+	# If the client directory exists (even empty), remove it so create-vite can create it.
+	if [[ -d "$CLIENT_DIR" ]]; then
+		rmdir "$CLIENT_DIR" 2>/dev/null || true
 	fi
 
   (
     cd "$SCRIPT_DIR"
-    CI=true npm create vite@latest frontend -- --template react-ts --rolldown --no-interactive
-    cd "$FRONTEND_DIR"
+    CI=true npm create vite@latest client -- --template react-ts --rolldown --no-interactive
+    cd "$CLIENT_DIR"
   )
 
   if [[ -n "$moved_env_example" && -f "$moved_env_example" ]]; then
-    mv "$moved_env_example" "$FRONTEND_DIR/.env.example"
+    mv "$moved_env_example" "$CLIENT_DIR/.env.example"
   fi
 
   # Ensure package.json has a reasonable "name".
-  if [[ -f "$FRONTEND_DIR/package.json" ]]; then
+  if [[ -f "$CLIENT_DIR/package.json" ]]; then
     (
-      cd "$FRONTEND_DIR"
+      cd "$CLIENT_DIR"
       VITE_APP_NAME="$vite_name" node - <<'NODE'
 const fs = require('fs');
 const path = require('path');
@@ -275,9 +275,9 @@ NODE
     )
   fi
 
-  # Set up a Vite proxy for /api -> backend.
-  if [[ -f "$FRONTEND_DIR/vite.config.ts" ]]; then
-    cat >"$FRONTEND_DIR/vite.config.ts" <<'TS'
+  # Set up a Vite proxy for /api -> api.
+  if [[ -f "$CLIENT_DIR/vite.config.ts" ]]; then
+    cat >"$CLIENT_DIR/vite.config.ts" <<'TS'
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -301,17 +301,17 @@ export default defineConfig(({ mode }) => {
 TS
   fi
 
-  # Ensure a frontend .env.example exists and document the proxy target.
-  if [[ ! -f "$FRONTEND_DIR/.env.example" ]]; then
-    cat >"$FRONTEND_DIR/.env.example" <<'ENV'
+  # Ensure a client .env.example exists and document the proxy target.
+  if [[ ! -f "$CLIENT_DIR/.env.example" ]]; then
+    cat >"$CLIENT_DIR/.env.example" <<'ENV'
 # Copy this file to .env and fill in values.
 
 # Vite dev proxy target for /api
 VITE_API_PROXY_TARGET=https://localhost:5001
 ENV
   else
-    if ! grep -q "VITE_API_PROXY_TARGET" "$FRONTEND_DIR/.env.example"; then
-      printf "\n# Vite dev proxy target for /api\nVITE_API_PROXY_TARGET=https://localhost:5001\n" >>"$FRONTEND_DIR/.env.example"
+    if ! grep -q "VITE_API_PROXY_TARGET" "$CLIENT_DIR/.env.example"; then
+      printf "\n# Vite dev proxy target for /api\nVITE_API_PROXY_TARGET=https://localhost:5001\n" >>"$CLIENT_DIR/.env.example"
     fi
   fi
 
@@ -320,14 +320,14 @@ ENV
   (
     printf "\nRunning npm install. Please wait...\n"
 
-    cd "$FRONTEND_DIR"
+    cd "$CLIENT_DIR"
     CI=true npm install
   )
 
   printf "\nDone. Next steps:\n"
-  printf -- "- Backend:  cd app/backend && dotnet watch run --project src/%s.Web\n" "$dotnet_base"
-  printf -- "- Frontend: cd app/frontend && npm run dev\n"
-  printf "\nFrontend calls should use relative URLs like /api/health (proxied to the backend).\n"
+  printf -- "- API:  cd app/api && dotnet watch run --project src/%s.Web\n" "$dotnet_base"
+  printf -- "- Client: cd app/client && npm run dev\n"
+  printf "\nClient calls should use relative URLs like /api/health (proxied to the api).\n"
 }
 
 main "$@"

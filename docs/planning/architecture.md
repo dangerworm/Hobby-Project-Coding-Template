@@ -12,7 +12,7 @@ This should be the source of truth for how the system fits together.
 
 Describe the major components and the direction of dependencies.
 
-- Frontend:
+- Frontend/Client:
 - Backend/API:
 - Database:
 - Infrastructure:

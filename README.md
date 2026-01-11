@@ -44,6 +44,9 @@ shaving.
 - One happy-path command sequence
 - How to tell it worked
 
+Template note: if you use Flyway for database migrations, a reusable runner
+lives in `app/flyway`.
+
 ## How to use it (if applicable)
 
 Only if the repo exposes something usable. This is usage, not extension.
